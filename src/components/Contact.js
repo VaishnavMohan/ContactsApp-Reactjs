@@ -1,14 +1,14 @@
 import React from "react";
 
-function Contact({ contact: { name, email, phone,id }, deleteContact }) {
+function Contact({ contact: { name, email, phone,id,fav }, deleteContact, favToggle }) {
   return (
     <div className="col">
       <div className="card shadow-sm w-100">
         <div className="card-header">
           <div className="row">
             <div className="col-6 ">{name}</div>
-            <div className="col-2 offset-4">
-              <i className="fas fa-star text-warning"></i>
+            <div onClick={()=> {favToggle(id)}} className="col-2 offset-4">
+              <i className={fav?"fas fa-star text-warning":"far fa-star text-warning"}></i>
             </div>
           </div>
         </div>

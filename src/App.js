@@ -26,7 +26,12 @@ function App() {
     });
     setContacts(newContact);
   };
-
+const favToggle = (id)=>{
+  let updatedContact = contacts.map((singleContact)=>{
+    return singleContact.id === id ? {...singleContact, fav: !singleContact.fav} : singleContact;
+  });
+  setContacts(updatedContact);
+};
   return (
     <Router>
       {/* <div classname="h1">
@@ -45,9 +50,9 @@ function App() {
         <Route
           exact
           path="/"
-          element={<Home formsub={formsub} contacts={contacts} deleteContact={deleteContact} />}
+          element={<Home formsub={formsub} contacts={contacts} favToggle={favToggle} deleteContact={deleteContact} />}
         />
-        <Route path="/favourite" element={<Favourite />} />
+        <Route path="/favourite" element={<Favourite contacts={contacts} favToggle={favToggle} deleteContact={deleteContact}/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
